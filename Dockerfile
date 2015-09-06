@@ -9,8 +9,6 @@ FROM ubuntu
 # Autor: mart / Mantiene: mart
 MAINTAINER mart mart
 
-# Imprimo un hola mundo
-RUN echo "¡Hola mundo! - Desde el Dockerfile"
-
-# Hago un ls -a
-RUN ls -a
+# Imprimo un hola mundo y un ls -a cuando se inicia el contenedor
+CMD echo "¡Hola mundo! - Desde el Dockerfile"
+CMD ls -a
