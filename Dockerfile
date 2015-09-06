@@ -11,4 +11,4 @@ MAINTAINER mart mart
 
 # Imprimo un hola mundo y un ls -a cuando se inicia el contenedor
 CMD echo "¡Hola mundo! - Desde el Dockerfile"
-CMD ls -a
+#CMD ls -a
