@@ -6,14 +6,22 @@ set(KEYWORD "tp0")  # Seteo el nombre del ejecutable
 project(${KEYWORD} CXX)
 
 # Seteo rutas del directorio de librerias y del directorio de código fuente
-set(RUTA_LIB "${${KEYWORD}_SOURCE_DIR}/lib")
-set(RUTA_SRC "${${KEYWORD}_SOURCE_DIR}/src")
+set(RUTA_RAIZ "${${KEYWORD}_SOURCE_DIR}")
+set(RUTA_LIB "${RUTA_RAIZ}/lib")
+set(RUTA_SRC "${RUTA_RAIZ}/src")
 
 # Seteo una variable "SRC" donde coloco la rutas de los archivos fuente
 set(SRC ${RUTA_SRC}/main.cpp ${RUTA_SRC}/rocks.cpp ${RUTA_SRC}/mon.cpp ${RUTA_SRC}/jason.cpp)
 
 # Seteo los nombres de las librerías
 set(LIBS rocksdb bz2 snappy z pthread rt mongoose jsoncpp)
+
+####################
+
+# Pruebo correr un script de prueba. TODO: Desde acá se instalarán todas las librerías necesarias para compilar el proyecto
+# execute_process(COMMAND ${RUTA_RAIZ}/script.sh)
+
+####################
 
 # Chequeo la existencia de todas las librerias agregadas
 foreach(LIB ${LIBS})
@@ -25,8 +33,6 @@ foreach(LIB ${LIBS})
    endif (LIBRERIA${LIB})
 endforeach(LIB ${LIBS})
 
-#####
-
 # Nombre del ejecutable resultante de la compilación. Los demás argumentos son los archivos fuente (sin los headers)
 add_executable(${KEYWORD} ${SRC})
 
@@ -37,6 +43,6 @@ include_directories(${RUTA_LIB})
 link_directories(${RUTA_LIB})
 target_link_libraries(${KEYWORD} ${LIBS})
 
-# Línea agregada para hacer uso de ISO C++11 que requiere la librería RocksDB
+# Línea agregada para hacer uso de ISO C++11 que requiere la librería RocksDB. Agrega al compilador el feature "cxx_range_for"
 target_compile_features(${KEYWORD} PRIVATE cxx_range_for)
 
