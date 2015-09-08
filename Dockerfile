@@ -62,7 +62,7 @@ RUN apt-get update && apt-get install -y \
 	rm master.zip && \
 
 # Defino el directorio de trabajo
-WORKDIR /home
+#WORKDIR /home
 
 # Defino el comando estándar
 CMD ["bash"]
