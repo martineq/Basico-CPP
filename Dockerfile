@@ -51,12 +51,14 @@ RUN apt-get update && apt-get install -y \
 	wget https://github.com/open-source-parsers/jsoncpp/archive/master.zip && \
 	unzip master.zip && \
 	cd jsoncpp-master && \
+	python amalgamate.py && \
+	cd dist && \
 	gcc -c jsoncpp.cpp && \
 	ar rvs libjsoncpp.a jsoncpp.o && \
 	sudo cp libjsoncpp.a /usr/local/lib && \
-	cd .. && \
+	cd ../.. && \
 	rm -rf jsoncpp-master && \
-	rm master.zip
+	rm master.zip && \
 
 # Defino el directorio de trabajo
 WORKDIR /home
