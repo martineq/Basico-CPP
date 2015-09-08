@@ -20,6 +20,7 @@ MAINTAINER mart mart
 # 5) Instalo la librería jsoncpp manualmente
 RUN apt-get update && apt-get install -y \
 		build-essential \
+		python \
 		libsnappy-dev \
 		zlib1g-dev \
 		libbz2-dev \
