@@ -32,31 +32,31 @@ RUN apt-get update && apt-get install -y \
 	rm -rf /var/lib/apt/lists/* && \
 	cd /home && \
 	wget https://github.com/facebook/rocksdb/archive/master.zip && \
-	unzip rocksdb-master.zip && \
+	unzip master.zip && \
 	cd rocksdb-master && \
 	make static_lib && \
 	sudo cp librocksdb.a /usr/local/lib && \
 	cd .. && \
 	rm -rf rocksdb-master && \
-	rm rocksdb-master.zip && \
+	rm master.zip && \
 	wget https://github.com/cesanta/mongoose/archive/master.zip && \
-	unzip mongoose-master.zip && \
+	unzip master.zip && \
 	cd mongoose-master && \
 	gcc -c mongoose.c && \
 	ar rvs libmongoose.a mongoose.o && \
 	sudo cp libmongoose.a /usr/local/lib && \
 	cd .. && \
 	rm -rf mongoose-master && \
-	rm mongoose-master.zip && \
+	rm master.zip && \
 	wget https://github.com/open-source-parsers/jsoncpp/archive/master.zip && \
-	unzip jsoncpp-master.zip && \
+	unzip master.zip && \
 	cd jsoncpp-master && \
 	gcc -c jsoncpp.cpp && \
 	ar rvs libjsoncpp.a jsoncpp.o && \
 	sudo cp libjsoncpp.a /usr/local/lib && \
 	cd .. && \
 	rm -rf jsoncpp-master && \
-	rm jsoncpp-master.zip
+	rm master.zip
 
 # Defino el directorio de trabajo
 WORKDIR /home
