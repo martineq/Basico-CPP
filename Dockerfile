@@ -59,10 +59,13 @@ RUN apt-get update && apt-get install -y \
 	sudo cp libjsoncpp.a /usr/local/lib && \
 	cd ../.. && \
 	rm -rf jsoncpp-master && \
-	rm master.zip && \
+	rm master.zip
+# TODO: Para seguir agregando comandos en la misma línea acordarse de agregar el " && \" en la línea de arriba
+#	 && \
+#	 && \
 
 # Defino el directorio de trabajo
-#WORKDIR /home
+WORKDIR /home
 
 # Defino el comando estándar
 CMD ["bash"]
