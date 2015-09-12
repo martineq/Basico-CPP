@@ -5,7 +5,4 @@
 
 # Ignoro carpetas las carpetas:
 build/
-test/
-lib/
-
 
