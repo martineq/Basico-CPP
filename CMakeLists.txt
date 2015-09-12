@@ -11,14 +11,14 @@ set(RUTA_LIB "${RUTA_RAIZ}/lib")
 set(RUTA_SRC "${RUTA_RAIZ}/src")
 
 # Seteo una variable "SRC" donde coloco la rutas de los archivos fuente
-set(SRC ${RUTA_SRC}/main.cpp ${RUTA_SRC}/rocks.cpp ${RUTA_SRC}/mon.cpp ${RUTA_SRC}/jason.cpp)
+set(SRC ${RUTA_SRC}/main.cpp ${RUTA_SRC}/LibraryTest.cpp)
 
 # Seteo los nombres de las librerías
 set(LIBS rocksdb bz2 snappy z pthread rt mongoose jsoncpp)
 
 ####################
 
-# Pruebo correr un script de prueba. TODO: Desde acá se instalarán todas las librerías necesarias para compilar el proyecto
+# Pruebo correr un script de prueba. (La instalación de las librerías ya se realiza en Docker)
 # execute_process(COMMAND ${RUTA_RAIZ}/script.sh)
 
 ####################

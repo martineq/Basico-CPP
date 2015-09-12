@@ -1,7 +1,7 @@
-############################################################
-# Dockerfile para el uso del Servidor
-# Basado en Ubuntu
-############################################################
+#######################################
+# Dockerfile                          #
+# Basado en Ubuntu 14.04              #
+#######################################
 
 # Setea la imagen base (Ubuntu oficial, versión 14.04)
 FROM ubuntu:14.04
@@ -9,27 +9,29 @@ FROM ubuntu:14.04
 # Autor: mart / Mantiene: mart
 MAINTAINER mart mart
 
-# Copio las carpetas. Copio las carpetas de las librerias para luego compilarlas.
-#COPY ./server /home
+# Copio carpetas. TODO: Ver que contenido copiar.
+#COPY ./ /home/server
 
-# En el RUN hago varias tareas
-# 1) Instalo las dependencias necesarias
-# 2) Limpio el directorio luego del apt-get
-# 3) Instalo la librería RocksDB manualmente
-# 4) Instalo la librería Mongoose manualmente
-# 5) Instalo la librería jsoncpp manualmente
+# En el RUN hago las siguientes tareas:
+# 1) Instalo las programas necesarios
+# 2) Instalo las dependencias necesarias
+# 3) Limpio el directorio luego del apt-get
+# 4) Instalo la librería RocksDB manualmente
+# 5) Instalo la librería Mongoose manualmente
+# 6) Instalo la librería jsoncpp manualmente
 RUN apt-get update && apt-get install -y \
 		build-essential \
 		python \
-		libsnappy-dev \
-		zlib1g-dev \
-		libbz2-dev \
-		libgflags-dev \
 		git \
 		cmake \
 		wget \
 		unzip \
-		tree && \
+		valgrind \
+		tree \
+		libsnappy-dev \
+		zlib1g-dev \
+		libbz2-dev \
+		libgflags-dev && \
 	rm -rf /var/lib/apt/lists/* && \
 	cd /home && \
 	wget https://github.com/facebook/rocksdb/archive/master.zip && \
@@ -69,3 +71,17 @@ WORKDIR /home
 
 # Defino el comando estándar
 CMD ["bash"]
+
+
+########################################################################
+########################################################################
+
+########################
+### Sección Temporal ###
+########################
+
+# TODO: Ver si hace falta agregar (creo que no va a ser necesario)
+#	sudo mkdir -p /usr/local/include/rocksdb/ && \	
+#	sudo cp -R ./include/* /usr/local/include/ && \
+
+# Para librerías dinámicas update cache: #sudo ldconfig

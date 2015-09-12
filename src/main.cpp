@@ -1,16 +1,15 @@
 #include    <iostream>
-#include    "rocks.h"
-#include    "mon.h"
-#include    "jason.h"
+#include    "LibraryTest.h"
 
 using namespace std;
  
 int main(int argc, char** argv) {
-	Rocks r;
-	Mon m;
-	Jason j;
-	r.EjemploDos();
-	//m.EjemploUno();
-	//j.EjemploUno();
+
+	LibraryTest lt;
+	lt.EjemploRocksDB();
+	lt.EjemploMongoose();
+	lt.EjemploJson();
+
 	return 0;
 }
+
