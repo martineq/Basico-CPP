@@ -41,7 +41,7 @@ install:
   - sudo dpkg -i libgflags0_2.0-1_amd64.deb
   - sudo wget https://gflags.googlecode.com/files/libgflags-dev_2.0-1_amd64.deb
   - sudo dpkg -i libgflags-dev_2.0-1_amd64.deb
-#####
+######
   - sudo wget https://github.com/facebook/rocksdb/archive/master.zip
   - sudo unzip master.zip
   - cd rocksdb-master
@@ -50,7 +50,7 @@ install:
   - cd ..
   - sudo rm -rf rocksdb-master
   - sudo rm master.zip
-#####
+######
   - sudo wget https://github.com/cesanta/mongoose/archive/master.zip
   - sudo unzip master.zip
   - cd mongoose-master
