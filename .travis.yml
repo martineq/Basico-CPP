@@ -19,8 +19,8 @@ install:
   - sudo apt-get update
   - sudo apt-get install -y gcc-4.9 g++-4.9
 # TODO: Probar instalar gcc-5 g++-5
-#  - sudo update-alternatives --remove-all gcc 
-#  - sudo update-alternatives --remove-all g++
+# TODO: borrar definitivamente - sudo update-alternatives --remove-all gcc 
+# TODO: borrar definitivamente  - sudo update-alternatives --remove-all g++
   - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 20
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 20
   - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-4.9 20
@@ -37,8 +37,8 @@ install:
 #  - sudo wget https://github.com/facebook/rocksdb/archive/master.zip
 #  - sudo unzip master.zip
 #  - cd rocksdb-master
- # - sudo make static_lib
- # - sudo cp librocksdb.a /usr/local/lib
+#  - sudo make static_lib
+#  - sudo cp librocksdb.a /usr/local/lib
 #  - cd ..
 #  - sudo rm -rf rocksdb-master
 #  - sudo rm master.zip
@@ -67,10 +67,10 @@ install:
   - pwd
   - sudo tree -d
   - pwd
-  - cd ..
-  - pwd
-  - sudo tree -d
-  - pwd
+#  - cd ..
+#  - pwd
+#  - sudo tree -d
+#  - pwd
 
 script: 
   - pwd
