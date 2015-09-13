@@ -9,7 +9,8 @@ compiler:
 install:
   - sudo apt-get update -qq
   - sudo apt-get install -y -qq lcov curl build-essential python git cmake wget unzip valgrind tree
-  - sudo apt-get install -y -qq libsnappy-dev zlib1g-dev libbz2-dev libgflags-dev
+  - sudo apt-get install -y -qq libsnappy-dev zlib1g-dev libbz2-dev
+#libgflags-dev
 
 #install:
 #  - sudo apt-get update && sudo apt-get install -y \
