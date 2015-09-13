@@ -5,6 +5,8 @@ language: cpp
 compiler:
   - gcc
 
+sudo: true
+
 #Instalacíón 
 install:
   - sudo apt-get update && apt-get install -y \
