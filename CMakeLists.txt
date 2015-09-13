@@ -114,6 +114,10 @@ if (NOT SOLO_EXECUTABLE)
   # Agregos los tests
   enable_testing()
   add_executable(test_ejemplo ${RUTA_TEST}/test.cpp)
+  
+  include_directories(${RUTA_LIB})
+  link_directories(${RUTA_LIB})
+  
   target_link_libraries(test_ejemplo ${NOMBRE_PROYECTO} ${LIBS})
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
   add_test(${NOMBRE_PROYECTO} test_ejemplo)
