@@ -33,7 +33,7 @@ install:
   - sudo wget https://gflags.googlecode.com/files/libgflags-dev_2.0-1_amd64.deb
   - sudo dpkg -i libgflags-dev_2.0-1_amd64.deb
   - sudo tree -d
-  - cd /home
+  - cd home
 #  - sudo wget https://github.com/facebook/rocksdb/archive/master.zip
 #  - sudo unzip master.zip
 #  - cd rocksdb-master
