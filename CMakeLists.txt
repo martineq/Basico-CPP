@@ -115,7 +115,13 @@ if (NOT SOLO_EXECUTABLE)
   enable_testing()
   add_executable(test_ejemplo ${RUTA_TEST}/test.cpp)
   target_link_libraries(test_ejemplo ${NOMBRE_PROYECTO})
-  target_compile_features(test_ejemplo PRIVATE cxx_range_for)
+
+###########
+  # Línea agregada para hacer uso de ISO C++11 requerido por RocksDB. Agrega al compilador el feature "cxx_range_for"
+  #target_compile_features(${NOMBRE_PROYECTO} PRIVATE cxx_range_for) # No funciona en versiones de CMake anteriores a 3.1 (Travis tiene 2.8)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+##############
+
   #Antes: add_test(${NOMBRE_PROYECTO} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test_ejemplo)
   add_test(${NOMBRE_PROYECTO} test_ejemplo)
 endif ()
