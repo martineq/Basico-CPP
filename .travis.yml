@@ -74,7 +74,7 @@ install:
 
 script: 
   - pwd
-  - cd build
+  - cd ../build
   - pwd
   - sudo cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
   - sudo make
