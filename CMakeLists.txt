@@ -11,7 +11,7 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR) # Se quitó el 3.1 para que corr
 
 # Definición del proyecto. Con CXX indico que todos los archivos son tratados como C++.
 set(NOMBRE_PROYECTO "server")  # Seteo el nombre del ejecutable
-project(${NOMBRE_PROYECTO} CXX)
+project(${NOMBRE_PROYECTO} C CXX)
 
 # Seteo rutas del directorio de librerias y del directorio de código fuente
 set(RUTA_RAIZ "${${NOMBRE_PROYECTO}_SOURCE_DIR}")
@@ -21,10 +21,10 @@ set(RUTA_TOOLS "${RUTA_RAIZ}/tools")
 set(RUTA_TEST "${RUTA_RAIZ}/test")
 
 # Seteo una variable "SRC" donde coloco la rutas de los archivos fuente
-set(SRC ${RUTA_SRC}/main.cpp ${RUTA_SRC}/LibraryTest.cpp)
+set(SRC ${RUTA_SRC}/main.cpp ${RUTA_SRC}/LibraryTest.cpp ${RUTA_LIB}/mongoose/mongoose.c)
 
 # Seteo los nombres de las librerías
-set(LIBS rocksdb bz2 snappy z pthread rt mongoose jsoncpp)
+set(LIBS rocksdb bz2 snappy z pthread rt jsoncpp) #mongoose
 
 # Flag para indicar si se quiere generar un ejecutable
 option(SOLO_EXECUTABLE "Activa la creación de un ejecutable, sin tests" NO) #TODO: Setear "NO" a la hora de crear los tests
@@ -114,11 +114,7 @@ if (NOT SOLO_EXECUTABLE)
   # Agregos los tests
   enable_testing()
   add_executable(test_ejemplo ${RUTA_TEST}/test.cpp)
-  
-  include_directories(${RUTA_LIB})
-  link_directories(${RUTA_LIB})
-  
-  target_link_libraries(test_ejemplo ${NOMBRE_PROYECTO} ${LIBS})
+  target_link_libraries(test_ejemplo ${NOMBRE_PROYECTO})
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
   add_test(${NOMBRE_PROYECTO} test_ejemplo)
 endif ()
