@@ -23,20 +23,25 @@ install:
   - sudo update-alternatives --config gcc
   - sudo update-alternatives --config g++
   - sudo update-alternatives --config gcov
+  - sudo make --version
+  - sudo add-apt-repository ppa:george-edison55/cmake-3.x
+  - sudo apt-get update
+  - sudo apt-get install cmake
+  - sudo make --version
   - sudo rm -rf /var/lib/apt/lists/*
   - cd temp_install
   - sudo wget https://gflags.googlecode.com/files/libgflags0_2.0-1_amd64.deb
   - sudo dpkg -i libgflags0_2.0-1_amd64.deb
   - sudo wget https://gflags.googlecode.com/files/libgflags-dev_2.0-1_amd64.deb
   - sudo dpkg -i libgflags-dev_2.0-1_amd64.deb
-  - sudo wget https://github.com/facebook/rocksdb/archive/master.zip
-  - sudo unzip master.zip
-  - cd rocksdb-master
-  - sudo make static_lib
-  - sudo cp librocksdb.a /usr/local/lib
-  - cd ..
-  - sudo rm -rf rocksdb-master
-  - sudo rm master.zip
+#  - sudo wget https://github.com/facebook/rocksdb/archive/master.zip
+#  - sudo unzip master.zip
+#  - cd rocksdb-master
+#  - sudo make static_lib
+#  - sudo cp librocksdb.a /usr/local/lib
+#  - cd ..
+#  - sudo rm -rf rocksdb-master
+#  - sudo rm master.zip
   - sudo wget https://github.com/cesanta/mongoose/archive/master.zip
   - sudo unzip master.zip
   - cd mongoose-master
