@@ -67,14 +67,14 @@ install:
   - pwd
   - sudo tree -d
   - pwd
-#  - cd ..
-#  - pwd
-#  - sudo tree -d
+  - cd 
+  - pwd
+  - sudo tree -d
 #  - pwd
 
 script: 
   - pwd
-  - cd ../build
+  - cd build
   - pwd
   - sudo cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
   - sudo make
