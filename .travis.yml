@@ -30,44 +30,44 @@ install:
   - sudo dpkg -i libgflags0_2.0-1_amd64.deb
   - sudo wget https://gflags.googlecode.com/files/libgflags-dev_2.0-1_amd64.deb
   - sudo dpkg -i libgflags-dev_2.0-1_amd64.deb
-  - sudo cd /home
+  - cd /home
   - sudo wget https://github.com/facebook/rocksdb/archive/master.zip
   - sudo unzip master.zip
-  - sudo cd rocksdb-master
+  - cd rocksdb-master
   - sudo make static_lib
   - sudo cp librocksdb.a /usr/local/lib
-  - sudo cd ..
+  - cd ..
   - sudo rm -rf rocksdb-master
   - sudo rm master.zip
   - sudo wget https://github.com/cesanta/mongoose/archive/master.zip
   - sudo unzip master.zip
-  - sudo cd mongoose-master
+  - cd mongoose-master
   - sudo gcc -c mongoose.c
   - sudo ar rvs libmongoose.a mongoose.o
   - sudo cp libmongoose.a /usr/local/lib
-  - sudo cd ..
+  - cd ..
   - sudo rm -rf mongoose-master
   - sudo rm master.zip
   - sudo wget https://github.com/open-source-parsers/jsoncpp/archive/master.zip
   - sudo unzip master.zip
-  - sudo cd jsoncpp-master
+  - cd jsoncpp-master
   - sudo python amalgamate.py
-  - sudo cd dist
+  - cd dist
   - sudo gcc -c jsoncpp.cpp
   - sudo ar rvs libjsoncpp.a jsoncpp.o
   - sudo cp libjsoncpp.a /usr/local/lib
-  - sudo cd ../..
+  - cd ../..
   - sudo rm -rf jsoncpp-master
   - sudo rm master.zip
-  - sudo cd -
+  - cd -
   - sudo tree -L 2 -d
-  - sudo cd -
+  - cd -
 
 before_script:
   - mkdir build
 
 script: 
-  - sudo cd build
+  - cd build
   - sudo cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
   - sudo make
   - sudo make coveralls
