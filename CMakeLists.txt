@@ -6,8 +6,8 @@
 # Seteos #
 ##########
 
-# Versión de CMake mínima usada para generar el proyecto, si no la encuentra, finaliza
-cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+# Versión de CMake mínima usada para generar el proyecto, si no la encuentra, finaliza.
+cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
 
 # Definición del proyecto. Con CXX indico que todos los archivos son tratados como C++.
 set(NOMBRE_PROYECTO "server")  # Seteo el nombre del ejecutable
@@ -80,7 +80,8 @@ link_directories(${RUTA_LIB})
 target_link_libraries(${NOMBRE_PROYECTO} ${LIBS})
 
 # Línea agregada para hacer uso de ISO C++11 que requiere la librería RocksDB. Agrega al compilador el feature "cxx_range_for"
-target_compile_features(${NOMBRE_PROYECTO} PRIVATE cxx_range_for)
+#target_compile_features(${NOMBRE_PROYECTO} PRIVATE cxx_range_for) # No funciona en versiones viejas de CMake (Travis no tiene la nueva)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 
 ###################################################

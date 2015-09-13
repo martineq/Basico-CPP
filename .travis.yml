@@ -23,11 +23,6 @@ install:
   - sudo update-alternatives --config gcc
   - sudo update-alternatives --config g++
   - sudo update-alternatives --config gcov
-  - sudo make --version
-  - sudo add-apt-repository ppa:george-edison55/cmake-3.x
-  - sudo apt-get update
-  - sudo apt-get install cmake
-  - sudo make --version
   - sudo rm -rf /var/lib/apt/lists/*
   - cd temp_install
   - sudo wget https://gflags.googlecode.com/files/libgflags0_2.0-1_amd64.deb
@@ -72,6 +67,7 @@ before_script:
 # Inicio el script para correr las pruebas y enviar los datos a coveralls.io, a partir de CMake
 script: 
   - cd build
+  - sudo make --version
   - sudo cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
   - sudo make
   - sudo make coveralls
