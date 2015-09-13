@@ -18,21 +18,16 @@ install:
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
   - sudo apt-get update
   - sudo apt-get install -y gcc-4.9 g++-4.9
-# TODO: Probar instalar gcc-5 g++-5
-# TODO: borrar definitivamente - sudo update-alternatives --remove-all gcc 
-# TODO: borrar definitivamente  - sudo update-alternatives --remove-all g++
-  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 20
-  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 20
-  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-4.9 20
+  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 10
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 10
+  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-4.9 10
   - sudo update-alternatives --config gcc
   - sudo update-alternatives --config g++
   - sudo update-alternatives --config gcov
-  - sudo gcc --version
   - sudo wget https://gflags.googlecode.com/files/libgflags0_2.0-1_amd64.deb
   - sudo dpkg -i libgflags0_2.0-1_amd64.deb
   - sudo wget https://gflags.googlecode.com/files/libgflags-dev_2.0-1_amd64.deb
   - sudo dpkg -i libgflags-dev_2.0-1_amd64.deb
-  - sudo tree -L 3 -a
   - cd temp_install
 #  - sudo wget https://github.com/facebook/rocksdb/archive/master.zip
 #  - sudo unzip master.zip
