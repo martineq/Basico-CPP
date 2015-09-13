@@ -59,15 +59,23 @@ install:
   - sudo gcc -c jsoncpp.cpp
   - sudo ar rvs libjsoncpp.a jsoncpp.o
   - sudo cp libjsoncpp.a /usr/local/lib
+  - pwd
   - cd ../..
-  - sudo rm -rf jsoncpp-master
+  - pwd
+ # - sudo rm -rf jsoncpp-master
   - sudo rm master.zip
+  - pwd
   - sudo tree -d
+  - pwd
   - cd -
+  - pwd
   - sudo tree -d
+  - pwd
 
 script: 
+  - pwd
   - cd build
+  - pwd
   - sudo cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
   - sudo make
   - sudo make coveralls
