@@ -24,11 +24,12 @@ install:
   - sudo update-alternatives --config gcc
   - sudo update-alternatives --config g++
   - sudo update-alternatives --config gcov
+  - sudo rm -rf /var/lib/apt/lists/*
+  - cd temp_install
   - sudo wget https://gflags.googlecode.com/files/libgflags0_2.0-1_amd64.deb
   - sudo dpkg -i libgflags0_2.0-1_amd64.deb
   - sudo wget https://gflags.googlecode.com/files/libgflags-dev_2.0-1_amd64.deb
   - sudo dpkg -i libgflags-dev_2.0-1_amd64.deb
-  - cd temp_install
 #  - sudo wget https://github.com/facebook/rocksdb/archive/master.zip
 #  - sudo unzip master.zip
 #  - cd rocksdb-master
@@ -58,8 +59,10 @@ install:
   - sudo rm -rf jsoncpp-master
   - sudo rm master.zip
   - cd ..
+  - sudo rm -rf temp_install
 
 script: 
+  - sudo tree -L 3 -a
   - cd build
   - sudo cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
   - sudo make
