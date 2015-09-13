@@ -6,13 +6,12 @@ compiler:
   - gcc
 
 before_install:
-  - mkdir -p usr/local/lib
+#  - mkdir -p usr/local/lib
   - mkdir temp_install
   - mkdir build
 
 #Instalacíón 
 install:
-  - pwd
   - sudo apt-get update -qq
   - sudo apt-get install -y -qq lcov curl build-essential python git cmake wget unzip valgrind tree
   - sudo apt-get install -y -qq libsnappy-dev zlib1g-dev libbz2-dev
@@ -60,22 +59,13 @@ install:
   - sudo gcc -c jsoncpp.cpp
   - sudo ar rvs libjsoncpp.a jsoncpp.o
   - sudo cp libjsoncpp.a /usr/local/lib
-  - pwd
   - cd ../..
-  - pwd
   - sudo rm -rf jsoncpp-master
   - sudo rm master.zip
-  - pwd
-  - sudo tree -d
-  - pwd
   - cd ..
-  - pwd
-  - sudo tree -d
 
 script: 
-  - pwd
   - cd build
-  - pwd
   - sudo cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
   - sudo make
   - sudo make coveralls
