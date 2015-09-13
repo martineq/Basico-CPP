@@ -21,6 +21,7 @@ install:
 
 before_script:
   - mkdir build
+  - tree -L 2 -d
 
 script: 
   - cd build
