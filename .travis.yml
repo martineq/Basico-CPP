@@ -9,7 +9,7 @@ compiler:
 before_install:
   - mkdir temp_install
 
-# Instalo todas las dependencias
+# Instalo todas las dependencias. (Tener en cuenta que Travis usa como base Ubuntu 12.04)
 install:
   - sudo apt-get update -qq
   - sudo apt-get install -y -qq lcov curl build-essential python git cmake wget unzip valgrind tree
@@ -67,7 +67,7 @@ before_script:
 # Inicio el script para correr las pruebas y enviar los datos a coveralls.io, a partir de CMake
 script: 
   - cd build
-  - sudo make --version
+  - sudo cmake --version
   - sudo cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
   - sudo make
   - sudo make coveralls
