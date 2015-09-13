@@ -62,12 +62,12 @@ install:
   - pwd
   - cd ../..
   - pwd
- # - sudo rm -rf jsoncpp-master
+  - sudo rm -rf jsoncpp-master
   - sudo rm master.zip
   - pwd
   - sudo tree -d
   - pwd
-  - cd -
+  - cd ..
   - pwd
   - sudo tree -d
   - pwd
