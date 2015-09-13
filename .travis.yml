@@ -7,7 +7,7 @@ compiler:
 
 before_install:
   - mkdir -p usr/local/lib
-  - mkdir home
+  - mkdir temp_install
   - mkdir build
 
 #Instalacíón 
@@ -33,8 +33,8 @@ install:
   - sudo dpkg -i libgflags0_2.0-1_amd64.deb
   - sudo wget https://gflags.googlecode.com/files/libgflags-dev_2.0-1_amd64.deb
   - sudo dpkg -i libgflags-dev_2.0-1_amd64.deb
-  - sudo tree -d
-  - cd home
+  - sudo tree -L 3 -a
+  - cd temp_install
 #  - sudo wget https://github.com/facebook/rocksdb/archive/master.zip
 #  - sudo unzip master.zip
 #  - cd rocksdb-master
@@ -68,8 +68,9 @@ install:
   - pwd
   - sudo tree -d
   - pwd
+  - cd ..
+  - pwd
   - sudo tree -d
-#  - pwd
 
 script: 
   - pwd
