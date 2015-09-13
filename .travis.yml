@@ -63,6 +63,8 @@ install:
   - sudo rm -rf jsoncpp-master
   - sudo rm master.zip
   - sudo tree -d
+  - cd -
+  - sudo tree -d
 
 script: 
   - cd build
