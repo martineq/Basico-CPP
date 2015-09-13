@@ -21,51 +21,53 @@ install:
 #  - sudo update-alternatives --remove-all g++
   - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 20
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 20
+  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-4.9 20
   - sudo update-alternatives --config gcc
   - sudo update-alternatives --config g++
+  - sudo update-alternatives --config gcov
   - sudo gcc --version
-  - wget https://gflags.googlecode.com/files/libgflags0_2.0-1_amd64.deb
+  - sudo wget https://gflags.googlecode.com/files/libgflags0_2.0-1_amd64.deb
   - sudo dpkg -i libgflags0_2.0-1_amd64.deb
-  - wget https://gflags.googlecode.com/files/libgflags-dev_2.0-1_amd64.deb
+  - sudo wget https://gflags.googlecode.com/files/libgflags-dev_2.0-1_amd64.deb
   - sudo dpkg -i libgflags-dev_2.0-1_amd64.deb
-  - cd /home
+  - sudo cd /home
   - sudo wget https://github.com/facebook/rocksdb/archive/master.zip
   - sudo unzip master.zip
-  - cd rocksdb-master
+  - sudo cd rocksdb-master
   - sudo make static_lib
   - sudo cp librocksdb.a /usr/local/lib
-  - cd ..
+  - sudo cd ..
   - sudo rm -rf rocksdb-master
   - sudo rm master.zip
   - sudo wget https://github.com/cesanta/mongoose/archive/master.zip
   - sudo unzip master.zip
-  - cd mongoose-master
-  - gcc -c mongoose.c
-  - ar rvs libmongoose.a mongoose.o
+  - sudo cd mongoose-master
+  - sudo gcc -c mongoose.c
+  - sudo ar rvs libmongoose.a mongoose.o
   - sudo cp libmongoose.a /usr/local/lib
-  - cd ..
+  - sudo cd ..
   - sudo rm -rf mongoose-master
   - sudo rm master.zip
   - sudo wget https://github.com/open-source-parsers/jsoncpp/archive/master.zip
   - sudo unzip master.zip
-  - cd jsoncpp-master
+  - sudo cd jsoncpp-master
   - sudo python amalgamate.py
-  - cd dist
-  - gcc -c jsoncpp.cpp
-  - ar rvs libjsoncpp.a jsoncpp.o
+  - sudo cd dist
+  - sudo gcc -c jsoncpp.cpp
+  - sudo ar rvs libjsoncpp.a jsoncpp.o
   - sudo cp libjsoncpp.a /usr/local/lib
-  - cd ../..
+  - sudo cd ../..
   - sudo rm -rf jsoncpp-master
   - sudo rm master.zip
-  - cd -
-
+  - sudo cd -
+  - sudo tree -L 2 -d
+  - sudo cd -
 
 before_script:
   - mkdir build
 
 script: 
-  - cd build
-  - tree -L 2 -d
-  - cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
-  - make
-  - make coveralls
+  - sudo cd build
+  - sudo cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
+  - sudo make
+  - sudo make coveralls
