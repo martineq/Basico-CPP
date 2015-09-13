@@ -34,14 +34,14 @@ install:
   - sudo dpkg -i libgflags-dev_2.0-1_amd64.deb
   - sudo tree -d
   - cd /home
-  - sudo wget https://github.com/facebook/rocksdb/archive/master.zip
-  - sudo unzip master.zip
-  - cd rocksdb-master
+#  - sudo wget https://github.com/facebook/rocksdb/archive/master.zip
+#  - sudo unzip master.zip
+#  - cd rocksdb-master
  # - sudo make static_lib
  # - sudo cp librocksdb.a /usr/local/lib
-  - cd ..
-  - sudo rm -rf rocksdb-master
-  - sudo rm master.zip
+#  - cd ..
+#  - sudo rm -rf rocksdb-master
+#  - sudo rm master.zip
   - sudo wget https://github.com/cesanta/mongoose/archive/master.zip
   - sudo unzip master.zip
   - cd mongoose-master
