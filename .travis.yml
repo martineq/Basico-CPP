@@ -12,6 +12,7 @@ before_install:
 
 #Instalacíón 
 install:
+  - pwd
   - sudo apt-get update -qq
   - sudo apt-get install -y -qq lcov curl build-essential python git cmake wget unzip valgrind tree
   - sudo apt-get install -y -qq libsnappy-dev zlib1g-dev libbz2-dev
@@ -66,8 +67,6 @@ install:
   - sudo rm master.zip
   - pwd
   - sudo tree -d
-  - pwd
-  - cd 
   - pwd
   - sudo tree -d
 #  - pwd
