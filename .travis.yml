@@ -30,6 +30,7 @@ install:
   - sudo dpkg -i libgflags0_2.0-1_amd64.deb
   - sudo wget https://gflags.googlecode.com/files/libgflags-dev_2.0-1_amd64.deb
   - sudo dpkg -i libgflags-dev_2.0-1_amd64.deb
+  - sudo tree -L 2 -d
   - cd /home
   - sudo wget https://github.com/facebook/rocksdb/archive/master.zip
   - sudo unzip master.zip
@@ -59,9 +60,7 @@ install:
   - cd ../..
   - sudo rm -rf jsoncpp-master
   - sudo rm master.zip
-  - cd -
   - sudo tree -L 2 -d
-  - cd -
 
 before_script:
   - mkdir build
