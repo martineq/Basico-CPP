@@ -5,11 +5,9 @@ language: cpp
 compiler:
   - gcc
 
-sudo: true
-
 #Instalacíón 
 install:
-  - sudo apt-get update && apt-get install -y \
+  - sudo apt-get update && sudo apt-get install -y \
     build-essential \
     python \
     git \
@@ -24,7 +22,9 @@ install:
     lcov \
     curl \
     libgflags-dev && \
-    rm -rf /var/lib/apt/lists/* && \
+    echo "punto 1" && \
+    sudo rm -rf /var/lib/apt/lists/* && \
+    echo "punto 2" && \
     cd /home && \
     wget https://github.com/facebook/rocksdb/archive/master.zip && \
     unzip master.zip && \
