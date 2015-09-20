@@ -9,6 +9,10 @@ compiler:
 before_install:
   - mkdir temp_install
 
+# Variable de ambiente
+env:
+  - COVERALLS_REPO_TOKEN=NjSHeqwozWnhmbbqBbT99Ya2UGeONoGTC
+
 # Instalo todas las dependencias. (Tener en cuenta que Travis usa como base Ubuntu 12.04)
 install:
   - sudo apt-get update -qq
