@@ -59,5 +59,7 @@ before_script:
 script: 
   - cd build
   - sudo cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
-  - sudo make
-  - sudo make coveralls
+#  - sudo make
+#  - sudo make coveralls
+  - sudo cmake --build . 
+  - sudo cmake --build . --target coveralls
