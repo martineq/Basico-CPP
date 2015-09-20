@@ -4,6 +4,10 @@ language: cpp
 # Seleeción de compiladores
 compiler:
   - gcc
+  
+# Exporto variables para coveralls
+ - export COVERALLS_SERVICE_NAME=travis-ci
+ - export COVERALLS_REPO_TOKEN=abc12345
 
 # Creo un directorio dedicado a la instalación
 before_install:
