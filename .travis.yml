@@ -4,13 +4,11 @@ language: cpp
 # Seleeción de compiladores
 compiler:
   - gcc
-  
-# Exporto variables para coveralls
- - export COVERALLS_SERVICE_NAME=travis-ci
- - export COVERALLS_REPO_TOKEN=abc12345
 
-# Creo un directorio dedicado a la instalación
+# Creo un directorio dedicado a la instalación y exporto variables para coveralls
 before_install:
+  - export COVERALLS_SERVICE_NAME=travis-ci
+  - export COVERALLS_REPO_TOKEN=NjSHeqwozWnhmbbqBbT99Ya2UGeONoGTC
   - mkdir temp_install
 
 # Instalo todas las dependencias. (Tener en cuenta que Travis usa como base Ubuntu 12.04)
