@@ -63,3 +63,4 @@ script:
 #  - sudo make coveralls
   - sudo cmake --build . 
   - sudo cmake --build . --target coveralls
+  - cat coveralls.json
