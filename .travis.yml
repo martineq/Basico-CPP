@@ -59,11 +59,11 @@ before_script:
 # Inicio el script para correr las pruebas y enviar los datos a coveralls.io, a partir de CMake. TODO: Habilitar make y solucionar los errores
 script: 
   - cd build
-  - sudo echo "Variable COVERALLS_REPO_TOKEN: |$COVERALLS_REPO_TOKEN|"
+  - sudo echo "Variable COVERALLS_REPO_TOKEN... $COVERALLS_REPO_TOKEN"
   - sudo cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
 #  - sudo make
 #  - sudo make coveralls
   - sudo cmake --build . 
   - sudo cmake --build . --target coveralls
-  - sudo echo "Variable COVERALLS_REPO_TOKEN: |$COVERALLS_REPO_TOKEN|"
-  - cat coveralls.json
+  - sudo echo "Variable COVERALLS_REPO_TOKEN... $COVERALLS_REPO_TOKEN"
+  - sudo cat coveralls.json
