@@ -7,10 +7,10 @@ using namespace std;
 
 int main(int argc, char **argv) {
 
-    //LibraryTest lt;
-    //lt.EjemploRocksDB();
-    //lt.EjemploMongoose();
-    //lt.EjemploJson();
+    LibraryTest lt;
+    lt.EjemploRocksDB();
+    lt.EjemploMongoose();
+    lt.EjemploJson();
 
     // Test siempre positivo (Sólo de prueba)
 	cout << "**Hola Mundo - Test**" << endl;
