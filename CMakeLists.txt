@@ -20,13 +20,17 @@ set(RUTA_SRC "${RUTA_RAIZ}/src")
 set(RUTA_TOOLS "${RUTA_RAIZ}/tools")
 set(RUTA_TEST "${RUTA_RAIZ}/test")
 
-# Seteo todos los fuentes
+# Seteo todos los fuentes que serán testeados y tendrá análisis de code coverage
 set(SRC_TESTEABLE ${RUTA_SRC}/LibraryTest.cpp)
-set(SRC_MAIN ${RUTA_SRC}/main.cpp)
-set(SRC ${SRC_MAIN} ${SRC_TESTEABLE})
+
+# Seteo todos los fuentes que no necesiten testeo y code coverage (por ejemplo el main, archivos fuente de librerías)
+set(SRC_NO_TESTEABLE ${RUTA_SRC}/main.cpp ${RUTA_LIB}/mongoose/mongoose.c)
+
+# Seteo TODOS los fuentes que necesita el proyecto
+set(SRC ${SRC_NO_TESTEABLE} ${SRC_TESTEABLE})
 
 # Seteo los nombres de las librerías
-set(LIBS rocksdb bz2 snappy z pthread rt jsoncpp mongoose)
+set(LIBS rocksdb bz2 snappy z pthread rt jsoncpp)
 
 # Flag para indicar si se quiere generar un ejecutable
 option(SOLO_EXECUTABLE "Activa la creación de un ejecutable, sin tests" NO)
