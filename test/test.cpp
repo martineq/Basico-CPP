@@ -8,7 +8,7 @@ using namespace std;
 int main(int argc, char **argv) {
 
     LibraryTest lt;
-    lt.EjemploRocksDB();
+    //lt.EjemploRocksDB();
     lt.EjemploMongoose();
     lt.EjemploJson();
 
