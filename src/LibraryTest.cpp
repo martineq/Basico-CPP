@@ -15,49 +15,49 @@ void LibraryTest::EjemploRocksDB() {
 
 	cout << "------------------------" << endl;
 	cout << " ¡Hola Mundo! - RocksDB " << endl;
-	cout << "------------------------" << endl;
+	cout << "------------------------" << endl; cout << "RocksDB 00" << endl;
 
-	std::string kDBPath = get_current_dir_name(); kDBPath+="/directorio_temporal_BD";
+	std::string kDBPath = get_current_dir_name(); kDBPath+="/directorio_temporal_BD"; cout << "RocksDB 01" << endl;
 
-	DB* db;
-	Options options;
+	DB* db; cout << "RocksDB 02" << endl;
+	Options options; cout << "RocksDB 03" << endl;
 
 	// Optimiza RocksDB. This is the easiest way to get RocksDB to perform well
-	options.IncreaseParallelism();
-	options.OptimizeLevelStyleCompaction();
+	options.IncreaseParallelism(); cout << "RocksDB 04" << endl;
+	options.OptimizeLevelStyleCompaction(); cout << "RocksDB 05" << endl;
 
 	// Crea la BD si no existiera antes
-	options.create_if_missing = true;
+	options.create_if_missing = true; cout << "RocksDB 06" << endl;
 
 	// Abre la BD
-	Status s = DB::Open(options, kDBPath, &db);
-	assert(s.ok());
+	Status s = DB::Open(options, kDBPath, &db); cout << "RocksDB 07" << endl;
+	assert(s.ok()); cout << "RocksDB 08" << endl;
 
 	// Uso del Put()
-	s = db->Put(WriteOptions(), "key1", "value");
-	assert(s.ok());
-	std::string value;
+	s = db->Put(WriteOptions(), "key1", "value"); cout << "RocksDB 09" << endl;
+	assert(s.ok()); cout << "RocksDB 10" << endl;
+	std::string value; cout << "RocksDB 11" << endl;
 
 	// Uso del Get()
-	s = db->Get(ReadOptions(), "key1", &value);
-	assert(s.ok());
-	assert(value == "value");
+	s = db->Get(ReadOptions(), "key1", &value); cout << "RocksDB 12" << endl;
+	assert(s.ok()); cout << "RocksDB 13" << endl;
+	assert(value == "value"); cout << "RocksDB 14" << endl;
 
 	// Aplico un grupo de actualizaciones atómicas
 	{
-	WriteBatch batch;
-	batch.Delete("key1");
-	batch.Put("key2", value);
-	s = db->Write(WriteOptions(), &batch);
+	WriteBatch batch; cout << "RocksDB 15" << endl;
+	batch.Delete("key1"); cout << "RocksDB 16" << endl;
+	batch.Put("key2", value); cout << "RocksDB 17" << endl;
+	s = db->Write(WriteOptions(), &batch); cout << "RocksDB 18" << endl;
 	}
 
-	s = db->Get(ReadOptions(), "key1", &value);
-	assert(s.IsNotFound());
+	s = db->Get(ReadOptions(), "key1", &value); cout << "RocksDB 19" << endl;
+	assert(s.IsNotFound()); cout << "RocksDB 20" << endl;
 
-	db->Get(ReadOptions(), "key2", &value);
-	assert(value == "value");
+	db->Get(ReadOptions(), "key2", &value); cout << "RocksDB 21" << endl;
+	assert(value == "value"); cout << "RocksDB 22" << endl;
 
-	delete db;
+	delete db; cout << "RocksDB 23" << endl;
 
 	cout << "Se creó y eliminó una base de datos en: " << kDBPath << endl;
 
