@@ -32,6 +32,9 @@ RUN apt-get update && apt-get install -y \
 		zlib1g-dev \
 		libbz2-dev \
 		libgflags-dev && \
+		tar  && \
+		curl  && \
+		lcov  && \
 	rm -rf /var/lib/apt/lists/* && \
 	cd /home && \
 	mkdir temp_install && \
