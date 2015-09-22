@@ -5,7 +5,7 @@ language: cpp
 compiler:
   - gcc
 
-# Creo un directorio dedicado a la instalación y exporto variables para coveralls
+# Creo un directorio dedicado a la instalación
 before_install:
   - mkdir temp_install
 
@@ -36,15 +36,6 @@ install:
   - sudo cp librocksdb.a /usr/local/lib
   - cd ..
   - sudo rm -rf rocksdb-master
-  - sudo rm master.zip
-  - sudo wget https://github.com/cesanta/mongoose/archive/master.zip
-  - sudo unzip master.zip
-  - cd mongoose-master
-  - sudo gcc -c mongoose.c
-  - sudo ar rvs libmongoose.a mongoose.o
-  - sudo cp libmongoose.a /usr/local/lib
-  - cd ..
-  - sudo rm -rf mongoose-master
   - sudo rm master.zip
   - sudo wget https://github.com/open-source-parsers/jsoncpp/archive/master.zip
   - sudo unzip master.zip
