@@ -12,26 +12,7 @@ compiler:
 services:
   - docker
 
-##########
-# Inicio el script para correr las pruebas y enviar los datos a coveralls.io, a partir de CMake.
+# Inicio el script para correr las pruebas y enviar los datos a coveralls.io, a partir de CMake. (Todo dentro de la imagen Docker)
 script: 
   - docker run martineq/tp0_7552:latest /bin/sh -c "sudo apt-get update -qq && sudo apt-get install -y -qq lcov curl && mkdir build && cd build && sudo cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug .. && sudo make && sudo make coveralls"
-###############
 
-
-# Cargo la imagen de docker y la corro
-#before_install:
-#  - docker run -t -i martineq/tp0_7552:latest
-
-# Creo un directorio dedicado al build. TODO: Sacar las 2 líneas apt-get una vez que actualice la imagen docker
-#before_script:
-#  - sudo apt-get update -qq
-#  - sudo apt-get install -y -qq lcov curl
-#  - mkdir build
-
-# Inicio el script para correr las pruebas y enviar los datos a coveralls.io, a partir de CMake.
-#script: 
-#  - cd build
-#  - sudo cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
-#  - sudo make
-#  - sudo make coveralls
