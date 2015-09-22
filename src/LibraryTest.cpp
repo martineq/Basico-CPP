@@ -23,8 +23,8 @@ void LibraryTest::EjemploRocksDB() {
 	Options options; cout << "RocksDB 03" << endl;
 
 	// Optimiza RocksDB. This is the easiest way to get RocksDB to perform well
-	options.IncreaseParallelism(); cout << "RocksDB 04" << endl;
-	options.OptimizeLevelStyleCompaction(); cout << "RocksDB 05" << endl;
+	/*.IncreaseParallelism();*/ cout << "RocksDB 04" << endl;
+	/*options.OptimizeLevelStyleCompaction();*/ cout << "RocksDB 05" << endl;
 
 	// Crea la BD si no existiera antes
 	options.create_if_missing = true; cout << "RocksDB 06" << endl;
