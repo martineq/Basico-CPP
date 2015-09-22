@@ -10,7 +10,7 @@ FROM ubuntu:14.04
 MAINTAINER mart mart
 
 # Copio carpetas. TODO: Ver que contenido copiar.
-#COPY ./ /home
+COPY ./ /home
 
 # En el RUN hago las siguientes tareas:
 # 1) Instalo las programas necesarios
@@ -34,6 +34,8 @@ RUN apt-get update && apt-get install -y \
 		libgflags-dev && \
 	rm -rf /var/lib/apt/lists/* && \
 	cd /home && \
+	mkdir temp_install && \
+	cd temp_install && \
 	wget https://github.com/facebook/rocksdb/archive/master.zip && \
 	unzip master.zip && \
 	cd rocksdb-master && \
@@ -61,7 +63,9 @@ RUN apt-get update && apt-get install -y \
 	sudo cp libjsoncpp.a /usr/local/lib && \
 	cd ../.. && \
 	rm -rf jsoncpp-master && \
-	rm master.zip
+	rm master.zip && \
+	cd .. && \
+	rm -rf temp_install
 # TODO: Para seguir agregando comandos en la misma línea acordarse de agregar el " && \" en la línea de arriba
 #	 && \
 #	 && \
