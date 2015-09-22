@@ -2,11 +2,11 @@
 sudo: required
 
 # Selección del lenguaje: C++
-language: cpp
+#language: cpp
 
 # Seleeción de compiladores
-compiler:
-  - gcc
+#compiler:
+#  - gcc
 
 # Agrego el uso del servicio de Docker
 services:
