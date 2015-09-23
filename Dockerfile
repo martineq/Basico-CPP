@@ -28,6 +28,7 @@ RUN apt-get update && apt-get install -y \
 		unzip \
 		valgrind \
 		tree \
+		nano \
 		libsnappy-dev \
 		zlib1g-dev \
 		libbz2-dev \
@@ -78,17 +79,3 @@ WORKDIR /home
 
 # Defino el comando estándar
 CMD ["bash"]
-
-
-########################################################################
-########################################################################
-
-########################
-### Sección Temporal ###
-########################
-
-# TODO: Ver si hace falta agregar (creo que no va a ser necesario)
-#	sudo mkdir -p /usr/local/include/rocksdb/ && \	
-#	sudo cp -R ./include/* /usr/local/include/ && \
-
-# Para librerías dinámicas update cache: #sudo ldconfig

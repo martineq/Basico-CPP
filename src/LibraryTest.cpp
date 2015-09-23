@@ -17,13 +17,13 @@ void LibraryTest::EjemploRocksDB() {
 	cout << " ¡Hola Mundo! - RocksDB " << endl;
 	cout << "------------------------" << endl; cout << "RocksDB 00" << endl;
 
-	std::string kDBPath = get_current_dir_name(); kDBPath+="/directorio_temporal_BD"; cout << "RocksDB 01" << endl;
+	std::string kDBPath = get_current_dir_name(); /*kDBPath+="/directorio_temporal_BD";*/ cout << "RocksDB 01" << endl;
 
 	DB* db; cout << "RocksDB 02" << endl;
 	Options options; cout << "RocksDB 03" << endl;
 
 	// Optimiza RocksDB. This is the easiest way to get RocksDB to perform well
-	/*.IncreaseParallelism();*/ cout << "RocksDB 04" << endl;
+	/*options.IncreaseParallelism();*/ cout << "RocksDB 04" << endl;
 	/*options.OptimizeLevelStyleCompaction();*/ cout << "RocksDB 05" << endl;
 
 	// Crea la BD si no existiera antes
