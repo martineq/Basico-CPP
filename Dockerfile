@@ -1,5 +1,5 @@
 #######################################
-# Dockerfile                          #
+# Dockerfile para el uso del Servidor #
 # Basado en Ubuntu 14.04              #
 #######################################
 
