@@ -46,7 +46,6 @@ RUN apt-get update && apt-get install -y \
 	unzip v3.13.1.zip && \
 	cd rocksdb-3.13.1 && \
 	make static_lib && \
-	sudo cp librocksdb.a /usr/lib && \
 	cd .. && \
 	rm v3.13.1.zip && \
 	wget https://github.com/cesanta/mongoose/archive/master.zip && \
