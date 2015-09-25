@@ -46,7 +46,6 @@ RUN apt-get update && apt-get install -y \
 	make static_lib && \
 	sudo cp librocksdb.a /usr/local/lib && \
 	cd .. && \
-	rm -rf rocksdb-3.13.1 && \
 	rm v3.13.1.zip && \
 	wget https://github.com/cesanta/mongoose/archive/master.zip && \
 	unzip master.zip && \
@@ -55,7 +54,6 @@ RUN apt-get update && apt-get install -y \
 	ar rvs libmongoose.a mongoose.o && \
 	sudo cp libmongoose.a /usr/local/lib && \
 	cd .. && \
-	rm -rf mongoose-master && \
 	rm master.zip && \
 	wget https://github.com/open-source-parsers/jsoncpp/archive/master.zip && \
 	unzip master.zip && \
@@ -66,7 +64,6 @@ RUN apt-get update && apt-get install -y \
 	ar rvs libjsoncpp.a jsoncpp.o && \
 	sudo cp libjsoncpp.a /usr/local/lib && \
 	cd ../.. && \
-	rm -rf jsoncpp-master && \
 	rm master.zip && \
 	cd .. && \
 	rm -rf temp_install
