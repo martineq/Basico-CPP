@@ -40,14 +40,14 @@ RUN apt-get update && apt-get install -y \
 	cd /home && \
 	mkdir temp_install && \
 	cd temp_install && \
-	wget https://github.com/facebook/rocksdb/archive/master.zip && \
-	unzip master.zip && \
-	cd rocksdb-master && \
+	wget https://github.com/facebook/rocksdb/archive/v3.13.1.zip && \
+	unzip v3.13.1.zip && \
+	cd rocksdb-3.13.1 && \
 	make static_lib && \
 	sudo cp librocksdb.a /usr/local/lib && \
 	cd .. && \
-	rm -rf rocksdb-master && \
-	rm master.zip && \
+	rm -rf rocksdb-3.13.1 && \
+	rm v3.13.1.zip && \
 	wget https://github.com/cesanta/mongoose/archive/master.zip && \
 	unzip master.zip && \
 	cd mongoose-master && \
