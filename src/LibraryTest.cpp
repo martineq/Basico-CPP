@@ -61,7 +61,7 @@ void LibraryTest::EjemploRocksDB() {
 
 	delete db; 
 
-	cout << "Se creó y eliminó una base de datos en: " << kDBPath << endl;
+	cout << "Se creó y eliminó una base de datos en: /tmp/testdb" << endl;
 
 	cout << "---------------" << endl;
 	cout << " Fin - RocksDB " << endl;

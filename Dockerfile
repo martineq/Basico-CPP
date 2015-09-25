@@ -3,8 +3,8 @@
 # Basado en Ubuntu 14.04              #
 #######################################
 
-# Setea la imagen base (Ubuntu oficial, versión 14.04)
-FROM ubuntu:14.04
+# Setea la imagen base (Ubuntu oficial)
+FROM ubuntu
 
 # Autor: mart / Mantiene: mart
 MAINTAINER mart mart
@@ -28,7 +28,9 @@ RUN apt-get update && apt-get install -y \
 		unzip \
 		valgrind \
 		tree \
+        vim \
 		nano \
+		joe \
 		libsnappy-dev \
 		zlib1g-dev \
 		libbz2-dev \
