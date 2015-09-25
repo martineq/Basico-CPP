@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y \
 		unzip \
 		valgrind \
 		tree \
-        vim \
+		vim \
 		nano \
 		joe \
 		libsnappy-dev \
@@ -46,7 +46,7 @@ RUN apt-get update && apt-get install -y \
 	unzip v3.13.1.zip && \
 	cd rocksdb-3.13.1 && \
 	make static_lib && \
-	sudo cp librocksdb.a /usr/local/lib && \
+	sudo cp librocksdb.a /usr/lib && \
 	cd .. && \
 	rm v3.13.1.zip && \
 	wget https://github.com/cesanta/mongoose/archive/master.zip && \
@@ -54,7 +54,7 @@ RUN apt-get update && apt-get install -y \
 	cd mongoose-master && \
 	gcc -c mongoose.c && \
 	ar rvs libmongoose.a mongoose.o && \
-	sudo cp libmongoose.a /usr/local/lib && \
+	sudo cp libmongoose.a /usr/lib && \
 	cd .. && \
 	rm master.zip && \
 	wget https://github.com/open-source-parsers/jsoncpp/archive/master.zip && \
@@ -64,11 +64,10 @@ RUN apt-get update && apt-get install -y \
 	cd dist && \
 	gcc -c jsoncpp.cpp && \
 	ar rvs libjsoncpp.a jsoncpp.o && \
-	sudo cp libjsoncpp.a /usr/local/lib && \
+	sudo cp libjsoncpp.a /usr/lib && \
 	cd ../.. && \
 	rm master.zip && \
-	cd .. && \
-	rm -rf temp_install
+	cd ..
 # TODO: Para seguir agregando comandos en la misma línea acordarse de agregar el " && \" en la línea de arriba
 #	 && \
 #	 && \
