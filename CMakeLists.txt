@@ -75,7 +75,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${RUTA_COVERALLS_CMAKE})
 
 # Chequeo la existencia de todas las librerias agregadas
 foreach(LIB ${LIBS})
-  find_library(LIBRERIA${LIB} ${LIB})
+  find_library(LIBRERIA${LIB} NAMES ${LIB} PATHS /home/temp_install/rocksdb-3.13.1 )
   if (LIBRERIA${LIB}) #False si es 0, OFF, NO, FALSE, N, IGNORE, NOTFOUND, vacio, o si termina en "-NOTFOUND". Caso contrario es TRUE.
     message(STATUS "Librería |${LIB}| encontrada en |${LIBRERIA${LIB}}|")         
   else (LIBRERIA${LIB})
