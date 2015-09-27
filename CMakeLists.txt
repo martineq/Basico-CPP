@@ -19,8 +19,7 @@ set(RUTA_TOOLS "${RUTA_RAIZ}/tools") # Ruta del directorio donde se encuentran l
 set(RUTA_TEST "${RUTA_RAIZ}/test") # Ruta del directorio donde se encuentran los archivos de test
 
 # Línea agregada para hacer uso de ISO C++11 requerido por RocksDB.
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 ") # Ver si queda o no el flag "-pthread"
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 ")
 
 
 ######################################################
@@ -31,23 +30,21 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 ") # Ver si queda o no el fla
 # Ejemplo para agregar paquetes: set(SRC_PACK_NOMBRE_DEL_PACK ${RUTA_SRC}/nombre_fuente_1.cpp ${RUTA_SRC}/nombre_fuente2.cpp)
 set(SRC_PACK_MAIN ${RUTA_SRC}/main.cpp)
 set(SRC_PACK_HOLA_MUNDO ${RUTA_SRC}/LibraryTest.cpp)
-#set(SRC_PACK_MONGOOSE ${RUTA_LIB}/mongoose/mongoose.c) # TODO: Definir si se va
 #...mas packs acá...
 
 
 # Todos los fuentes que serán testeados y tendrán análisis de code coverage
 set(SRC_TESTEABLE ${SRC_PACK_HOLA_MUNDO})
 # Fuentes que no necesiten testeo y code coverage (main, librerías, etc)
-set(SRC_NO_TESTEABLE ${SRC_PACK_MAIN} ) #${SRC_PACK_MONGOOSE}) # TODO: Definir si se va
+set(SRC_NO_TESTEABLE ${SRC_PACK_MAIN})
 # Reuno TODOS los fuentes que necesita el proyecto
 set(SRC ${SRC_NO_TESTEABLE} ${SRC_TESTEABLE})
 
 # Nombres de las librerías a usar en el proyecto
-set(NOMBRE_LIBS rocksdb z snappy bz2 jsoncpp pthread rt mongoose) # TODO: Ver si quedan "pthread" y "rt" # TODO: confirmar mongoose
+set(NOMBRE_LIBS rocksdb z snappy bz2 jsoncpp pthread rt mongoose)
 
 # Flag para indicar si se quiere generar un ejecutable. Para activarlo usar "cmake -DEXE=SI"
 option(EXE "Activa la creación de un ejecutable, sin tests" NO)
-
 
 
 ###################################
@@ -61,10 +58,8 @@ set(NOMBRE_TEST "test_server")
 set(SRC_TEST_PACK_SIMPLE ${RUTA_TEST}/test.cpp)
 #...mas packs acá...
 
-
 # Seteo los archivos fuente que se usan para realizar el testeo
 set(SRC_TEST ${SRC_TEST_PACK_SIMPLE})
-
 
 
 #############################################
@@ -82,22 +77,19 @@ set(RUTA_COVERALLS_CMAKE "${RUTA_TOOLS}/coveralls-cmake/cmake")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${RUTA_COVERALLS_CMAKE})
 
 
-
 ########################
 # Chequeo de Librerías #
 ########################
 
-# Chequeo la existencia de todas las librerias agregadas y las agrego en RUTA_LIBS
+# Chequeo la existencia de todas las librerias agregadas
 foreach(LIB ${NOMBRE_LIBS})
   find_library(LIBRERIA${LIB} NAMES ${LIB} PATHS ${RUTA_LIB}) # Antes "PATHS lib/"
   if (LIBRERIA${LIB}) #False si es 0, OFF, NO, FALSE, N, IGNORE, NOTFOUND, vacio, o si termina en "-NOTFOUND". Caso contrario es TRUE.
     message(STATUS "Librería |${LIB}| encontrada en |${LIBRERIA${LIB}}|")
-    set(RUTA_LIBS ${RUTA_LIBS} ${LIBRERIA${LIB}} ) # TODO: Ver si se saca RUTA_LIBS
   else (LIBRERIA${LIB})
     message(FATAL_ERROR "No se encontró la librería |${LIB}|. Verificar existencia.")
   endif (LIBRERIA${LIB})
 endforeach(LIB ${NOMBRE_LIBS})
-
 
 
 #########################################
@@ -117,12 +109,7 @@ endif (EXE)
 
 # Incluyo la ruta de las librerías para el compiler
 include_directories(${RUTA_LIB})
-
-# Vinculo la ruta de las librerías y los nombres de las mismas para el linker. # ESTO NO VA PARECE. # TODO: SACAR definitivamente
-#link_directories(${RUTA_RAIZ}/lib)
-
-target_link_libraries(${NOMBRE_PROYECTO} ${RUTA_LIBS})
-
+target_link_libraries(${NOMBRE_PROYECTO} ${NOMBRE_LIBS})
 
 
 ###################################################
@@ -147,7 +134,6 @@ if (COVERALLS)
 endif(COVERALLS)
 
 
-
 #########################
 # Configuración de test #
 #########################
@@ -159,6 +145,4 @@ if (NOT EXE)
   target_link_libraries(${NOMBRE_TEST} ${NOMBRE_PROYECTO})
   add_test(${NOMBRE_PROYECTO} ${NOMBRE_TEST})
 endif ()
-
-
 

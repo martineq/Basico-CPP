@@ -49,15 +49,15 @@ RUN apt-get update && apt-get install -y \
 	cd .. && \
 	rm v3.13.1.zip && \
 	wget https://github.com/cesanta/mongoose/archive/5.6.zip && \
-	unzip mongoose-5.6.zip && \
+	unzip 5.6.zip && \
 	cd mongoose-5.6 && \
 	gcc -c mongoose.c && \
 	ar rvs libmongoose.a mongoose.o && \
 	sudo cp libmongoose.a /usr/lib && \
 	cd .. && \
-	rm master.zip && \
+	rm 5.6.zip && \
 	wget https://github.com/open-source-parsers/jsoncpp/archive/1.6.5.zip && \
-	unzip jsoncpp-1.6.5.zip && \
+	unzip 1.6.5.zip && \
 	cd jsoncpp-1.6.5 && \
 	python amalgamate.py && \
 	cd dist && \
@@ -65,7 +65,7 @@ RUN apt-get update && apt-get install -y \
 	ar rvs libjsoncpp.a jsoncpp.o && \
 	sudo cp libjsoncpp.a /usr/lib && \
 	cd ../.. && \
-	rm master.zip && \
+	rm 1.6.5.zip && \
 	cd .. && \
 	rm -rf temp_install
 # TODO: Para seguir agregando comandos en la misma línea acordarse de agregar el " && \" en la línea de arriba
