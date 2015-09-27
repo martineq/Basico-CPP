@@ -3,8 +3,8 @@
 # Basado en Ubuntu 14.04              #
 #######################################
 
-# Setea la imagen base (Ubuntu oficial)
-FROM ubuntu
+# Setea la imagen base (Ubuntu oficial, versión 14.04)
+FROM ubuntu:14.04
 
 # Autor: mart / Mantiene: mart
 MAINTAINER mart mart
@@ -30,7 +30,6 @@ RUN apt-get update && apt-get install -y \
 		tree \
         vim \
 		nano \
-		joe \
 		libsnappy-dev \
 		zlib1g-dev \
 		libbz2-dev \
@@ -46,25 +45,25 @@ RUN apt-get update && apt-get install -y \
 	unzip v3.13.1.zip && \
 	cd rocksdb-3.13.1 && \
 	make static_lib && \
-	sudo cp librocksdb.a /usr/local/lib && \
+	sudo cp librocksdb.a /usr/lib && \
 	cd .. && \
 	rm v3.13.1.zip && \
-	wget https://github.com/cesanta/mongoose/archive/master.zip && \
-	unzip master.zip && \
-	cd mongoose-master && \
+	wget https://github.com/cesanta/mongoose/archive/5.6.zip && \
+	unzip mongoose-5.6.zip && \
+	cd mongoose-5.6 && \
 	gcc -c mongoose.c && \
 	ar rvs libmongoose.a mongoose.o && \
-	sudo cp libmongoose.a /usr/local/lib && \
+	sudo cp libmongoose.a /usr/lib && \
 	cd .. && \
 	rm master.zip && \
-	wget https://github.com/open-source-parsers/jsoncpp/archive/master.zip && \
-	unzip master.zip && \
-	cd jsoncpp-master && \
+	wget https://github.com/open-source-parsers/jsoncpp/archive/1.6.5.zip && \
+	unzip jsoncpp-1.6.5.zip && \
+	cd jsoncpp-1.6.5 && \
 	python amalgamate.py && \
 	cd dist && \
 	gcc -c jsoncpp.cpp && \
 	ar rvs libjsoncpp.a jsoncpp.o && \
-	sudo cp libjsoncpp.a /usr/local/lib && \
+	sudo cp libjsoncpp.a /usr/lib && \
 	cd ../.. && \
 	rm master.zip && \
 	cd .. && \

@@ -17,9 +17,10 @@ class LibraryTest {
    void EjemploMongoose();
 
    private:
-   void SalidaJson(const Json::Value & value);
-   static int ev_handler(struct mg_connection *, enum mg_event);
 
+   void SalidaJson(const Json::Value & value);
+   static int ev_handler(struct mg_connection *conn, enum mg_event ev);
+   
 
 }; 
  

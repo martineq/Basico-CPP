@@ -10,7 +10,6 @@
 using namespace std;
 using namespace rocksdb;
 
-
 void LibraryTest::EjemploRocksDB() {
 
 	cout << "------------------------" << endl;
@@ -25,8 +24,8 @@ void LibraryTest::EjemploRocksDB() {
 	Options options; 
 
 	// Optimiza RocksDB. This is the easiest way to get RocksDB to perform well
-	//options.IncreaseParallelism(); 
-	//options.OptimizeLevelStyleCompaction(); 
+	options.IncreaseParallelism(); 
+	options.OptimizeLevelStyleCompaction(); 
 
 	// Crea la BD si no existiera antes
 	options.create_if_missing = true; 
@@ -117,13 +116,14 @@ void LibraryTest::SalidaJson(const Json::Value & value){
 }
 
 void LibraryTest::EjemploMongoose() {
-
-	struct mg_server *server;
-
-	cout << "-------------------------" << endl;
+    
+    cout << "-------------------------" << endl;
 	cout << " ¡Hola Mundo! - Mongoose " << endl;
 	cout << "-------------------------" << endl;
 
+
+	struct mg_server *server;
+	
 	// Create and configure the server
 	server = mg_create_server(NULL, ev_handler);
 	mg_set_option(server, "listening_port", "8080");
@@ -138,12 +138,11 @@ void LibraryTest::EjemploMongoose() {
 	// Cleanup, and free server instance
 	mg_destroy_server(&server);
 
-	cout << "----------------" << endl;
-	cout << " Fin - Mongoose " << endl;
-	cout << "----------------" << endl;
+    cout << "----------------" << endl;
+    cout << " Fin - Mongoose " << endl;
+    cout << "----------------" << endl;
 
 }
-
 
 int LibraryTest::ev_handler(struct mg_connection *conn, enum mg_event ev) {
   switch (ev) {
