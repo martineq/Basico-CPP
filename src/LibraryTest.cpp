@@ -16,10 +16,6 @@ void LibraryTest::EjemploRocksDB() {
 	cout << " ¡Hola Mundo! - RocksDB " << endl;
 	cout << "------------------------" << endl; 
 
-	//char* dirName = "/tmp/";// get_current_dir_name();
-	//std::string kDBPath = dirName; kDBPath+="/directorio_temporal_BD"; 
-	//free(dirName);
-
 	DB* db; 
 	Options options; 
 
@@ -60,7 +56,7 @@ void LibraryTest::EjemploRocksDB() {
 
 	delete db; 
 
-	cout << "Se creó y eliminó una base de datos en: /tmp/testdb" << endl;
+	cout << "Se creó una base de datos en: /tmp/testdb" << endl;
 
 	cout << "---------------" << endl;
 	cout << " Fin - RocksDB " << endl;

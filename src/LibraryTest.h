@@ -6,7 +6,7 @@
 #include "rocksdb/db.h"
 #include "rocksdb/slice.h"
 #include "rocksdb/options.h"
-#include "../lib/mongoose/mongoose.h"
+#include "mongoose/mongoose.h"
 #include "json/json.h"
 
 class LibraryTest {
