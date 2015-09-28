@@ -10,7 +10,7 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
 set(NOMBRE_PROYECTO "server")  # Seteo el nombre del ejecutable
-project(${NOMBRE_PROYECTO} C CXX) # Definición del proyecto.
+project(${NOMBRE_PROYECTO} C CXX) # Definición del proyecto
 
 set(RUTA_RAIZ "${${NOMBRE_PROYECTO}_SOURCE_DIR}") # Ruta del directorio raíz
 set(RUTA_LIB "${RUTA_RAIZ}/lib") # Ruta del directorio donde se encuentran los headers de las librerías usadas
@@ -18,33 +18,36 @@ set(RUTA_SRC "${RUTA_RAIZ}/src") # Ruta del directorio donde se encuentran los a
 set(RUTA_TOOLS "${RUTA_RAIZ}/tools") # Ruta del directorio donde se encuentran las herramientas para usar en el proyecto
 set(RUTA_TEST "${RUTA_RAIZ}/test") # Ruta del directorio donde se encuentran los archivos de test
 
-# Línea agregada para hacer uso de ISO C++11 requerido por RocksDB.
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 ")
-
 
 ######################################################
 ### Seteos referidos a la compilación del servidor ###
 ######################################################
 
 # Seteo distintos paquetes de archivos fuente, se agregan líneas nuevas según necesidad
-# Ejemplo para agregar paquetes: set(SRC_PACK_NOMBRE_DEL_PACK ${RUTA_SRC}/nombre_fuente_1.cpp ${RUTA_SRC}/nombre_fuente2.cpp)
-set(SRC_PACK_MAIN ${RUTA_SRC}/main.cpp)
-set(SRC_PACK_HOLA_MUNDO ${RUTA_SRC}/LibraryTest.cpp)
-#...mas packs acá...
+# Ejemplo para agregar paquetes: set(SRC_PACK_NOMBRE_DEL_PACK ${RUTA_SRC}/nombre_fuente_1.cc ${RUTA_SRC}/nombre_fuente2.cc)
+set(SRC_PACK_MAIN ${RUTA_SRC}/main.cc)
+set(SRC_PACK_HOLA_MUNDO ${RUTA_SRC}/helloworld.cc)
+# ***** EN ESTE SECTOR SE AGREGAN TODOS LOS NUEVOS ARCHIVOS FUENTE DEL SERVIDOR *****
 
 
-# Todos los fuentes que serán testeados y tendrán análisis de code coverage
+
+# Todos los fuentes que serán testeados y tendrán análisis de code coverage. NO AGREGAR RUTAS, sólo variables "${SRC_PACK_...}"
 set(SRC_TESTEABLE ${SRC_PACK_HOLA_MUNDO})
-# Fuentes que no necesiten testeo y code coverage (main, librerías, etc)
-set(SRC_NO_TESTEABLE ${SRC_PACK_MAIN})
+
+# Fuentes que no necesiten testeo y code coverage (main, librerías, etc). NO AGREGAR RUTAS, sólo variables "${SRC_PACK_...}"
+set(SRC_NO_TESTEABLE ${SRC_PACK_MAIN} )
+
 # Reuno TODOS los fuentes que necesita el proyecto
-set(SRC ${SRC_NO_TESTEABLE} ${SRC_TESTEABLE})
+set(SRC ${SRC_NO_TESTEABLE} ${SRC_TESTEABLE}) # *NO* modificar esta línea, cargar en SRC_TESTEABLE o SRC_NO_TESTEABLE
 
 # Nombres de las librerías a usar en el proyecto
 set(NOMBRE_LIBS rocksdb z snappy bz2 jsoncpp pthread rt mongoose)
 
-# Flag para indicar si se quiere generar un ejecutable. Para activarlo usar "cmake -DEXE=SI"
+# Flag para indicar si se quiere generar un ejecutable. Para activarlo usar desde la carpeta build "cmake -DEXE=SI .."
 option(EXE "Activa la creación de un ejecutable, sin tests" NO)
+
+# Línea agregada para hacer uso de ISO C++11 requerido por RocksDB.
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 ")
 
 
 ###################################
@@ -55,10 +58,10 @@ option(EXE "Activa la creación de un ejecutable, sin tests" NO)
 set(NOMBRE_TEST "test_server")
 
 # Seteo distintos paquetes de archivos de test, se agregan líneas nuevas según necesidad
-set(SRC_TEST_PACK_SIMPLE ${RUTA_TEST}/test.cpp)
-#...mas packs acá...
+set(SRC_TEST_PACK_SIMPLE ${RUTA_TEST}/test.cc)
+# ***** EN ESTE SECTOR SE AGREGAN TODOS LOS NUEVOS ARCHIVOS FUENTE CON CÓDIGO DE PRUEBAS *****
 
-# Seteo los archivos fuente que se usan para realizar el testeo
+# Seteo TODOS los archivos fuente que se usan para realizar el testeo. NO AGREGAR RUTAS, sólo variables "${SRC_TEST_...}"
 set(SRC_TEST ${SRC_TEST_PACK_SIMPLE})
 
 
@@ -83,7 +86,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${RUTA_COVERALLS_CMAKE})
 
 # Chequeo la existencia de todas las librerias agregadas
 foreach(LIB ${NOMBRE_LIBS})
-  find_library(LIBRERIA${LIB} NAMES ${LIB} PATHS ${RUTA_LIB}) # Antes "PATHS lib/"
+  find_library(LIBRERIA${LIB} NAMES ${LIB} )
   if (LIBRERIA${LIB}) #False si es 0, OFF, NO, FALSE, N, IGNORE, NOTFOUND, vacio, o si termina en "-NOTFOUND". Caso contrario es TRUE.
     message(STATUS "Librería |${LIB}| encontrada en |${LIBRERIA${LIB}}|")
   else (LIBRERIA${LIB})
@@ -98,11 +101,11 @@ endforeach(LIB ${NOMBRE_LIBS})
 
 # Verifico si debo crear un ejecutable o una librería
 if (EXE)
-  message(STATUS "- Generación de ejecutable")
+  message(STATUS "*** Generación de ejecutable ***")
   # Nombre del ejecutable resultante de la compilación. Los demás argumentos son los archivos fuente (sin los headers)
   add_executable(${NOMBRE_PROYECTO} ${SRC})
 else (EXE)
-  message(STATUS "- Generación de biblioteca")
+  message(STATUS "*** Generación de biblioteca para test ***")
   # Creo una biblioteca para correr los tests
   add_library(${NOMBRE_PROYECTO} ${SRC})
 endif (EXE)
@@ -145,4 +148,3 @@ if (NOT EXE)
   target_link_libraries(${NOMBRE_TEST} ${NOMBRE_PROYECTO})
   add_test(${NOMBRE_PROYECTO} ${NOMBRE_TEST})
 endif ()
-
