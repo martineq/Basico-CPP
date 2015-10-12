@@ -66,6 +66,15 @@ RUN apt-get update && apt-get install -y \
 	sudo cp libjsoncpp.a /usr/lib && \
 	cd ../.. && \
 	rm 1.6.5.zip && \
+	wget https://googletest.googlecode.com/files/gtest-1.7.0.zip && \
+	unzip gtest-1.7.0.zip && \
+	cd gtest-1.7.0 && \
+	./configure && \
+	make && \
+	sudo cp -a lib/.libs/libgtest.a /usr/lib && \
+	sudo cp -a lib/.libs/libgtest_main.a /usr/lib && \
+	cd .. && \
+	rm gtest-1.7.0.zip && \
 	cd .. && \
 	rm -rf temp_install
 # TODO: Para seguir agregando comandos en la misma línea acordarse de agregar el " && \" en la línea de arriba
